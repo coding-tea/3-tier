@@ -10,16 +10,16 @@ public interface StudentDao {
 
     public Student find(String cin);
 
-    public void create(
+    public boolean create(
             String cin,
             String name,
             int age);
 
-    public void update(
+    public boolean update(
             String cin,
             String name,
             int age);
 
-    public void delete(String cin);
+    public boolean delete(String cin);
 
 }
