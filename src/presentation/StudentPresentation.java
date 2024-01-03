@@ -8,14 +8,13 @@ public class StudentPresentation {
     public static void main(String[] args) {
 
         StudentBusiness studentBusiness = new StudentBusiness();
-
         Scanner scanner = new Scanner(System.in);
 
         int choise = 0;
-        while (choise != 5) {
-            System.out.println("Enter from 1 to 5 : ");
+        while (choise != 6) {
+            System.out.println("Enter from 1 to 6 : ");
             System.out.println(
-                    "1 : show all student \n2 : show specific student\n3 : create a new student\n4: delete student\n5 : exit");
+                    "1 : show all student \n2 : show specific student\n3 : create a new student\n4 : delete student\n5 : update student\n6 : exit");
             choise = scanner.nextInt();
             switch (choise) {
                 case 1:
@@ -43,7 +42,16 @@ public class StudentPresentation {
                     String cinDelete = scanner.nextLine();
                     studentBusiness.delete(cinDelete);
                     break;
-
+                case 5:
+                    scanner.nextLine();
+                    System.out.println("Enter cin ...");
+                    String cinUpdate = scanner.nextLine();
+                    System.out.println("Enter name ...");
+                    String nameUpdate = scanner.nextLine();
+                    System.out.println("Enter age ...");
+                    int ageUpdate = scanner.nextInt();
+                    studentBusiness.update(cinUpdate, nameUpdate, ageUpdate);
+                    break;
                 default:
                     break;
             }
