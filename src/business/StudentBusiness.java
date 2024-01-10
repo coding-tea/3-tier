@@ -2,48 +2,37 @@ package business;
 
 import java.util.List;
 
+import dao.StudentDao;
 import dao.StudentDaoJson;
 import models.Student;
 
-public class StudentBusiness {
+public class StudentBusiness implements Services {
 
-    private StudentDaoJson studentDaoJson;
+    private StudentDao dao;
 
-    public StudentBusiness() {
-        this.studentDaoJson = new StudentDaoJson();
+    private StudentBusiness(StudentDao dao) {
+        this.dao = dao;
     }
 
-    public void selectALL() {
+    public List<Student> selectALL() {
 
-        List<Student> students = this.studentDaoJson.selectALL();
-        if (students.size() > 0) {
-            for (Student student : students) {
-                System.out.println(student);
-            }
-        }
+        return this.dao.selectALL();
 
     }
 
-    public void find(String cin) {
-        Student student = this.studentDaoJson.find(cin);
-        System.out.println(student);
+    public Student find(String cin) {
+        return this.dao.find(cin);
     }
 
-    public void create(String cin, String name, int age) {
-        boolean check = this.studentDaoJson.create(cin, name, age);
-        if (check)
-            System.out.println("student created successfuly");
+    public boolean create(String cin, String name, int age) {
+        return this.dao.create(cin, name, age);
     }
 
-    public void update(String cin, String name, int age) {
-        boolean check = this.studentDaoJson.update(cin, name, age);
-        if (check)
-            System.out.println("student updated successfuly");
+    public boolean update(String cin, String name, int age) {
+        return this.dao.update(cin, name, age);
     }
 
-    public void delete(String cin) {
-        boolean check = this.studentDaoJson.delete(cin);
-        if (check)
-            System.out.println("student deleted successfuly");
+    public boolean delete(String cin) {
+        return this.dao.delete(cin);
     }
 }
