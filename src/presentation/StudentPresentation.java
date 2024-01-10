@@ -3,11 +3,12 @@ package presentation;
 import java.util.Scanner;
 
 import business.StudentBusiness;
+import dao.StudentDaoJson;
 
 public class StudentPresentation {
     public static void main(String[] args) {
 
-        StudentBusiness studentBusiness = new StudentBusiness();
+        StudentBusiness studentBusiness = StudentBusiness.getInstance(new StudentDaoJson());
         Scanner scanner = new Scanner(System.in);
 
         int choise = 0;
